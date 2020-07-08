@@ -2,7 +2,9 @@
 
 namespace Alura\Doctrine\Entity;
 
-//O mapeamento é no doctrine é feito através do annotationss
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
 /**
  * @Entity
  */
@@ -10,14 +12,23 @@ class Aluno
 {
     /**
      * @Id
-     * @Column(type="integer")
      * @GeneratedValue
+     * @Column(type="integer")
      */
     private $id;
     /**
      * @Column(type="string")
      */
     private $nome;
+    /**
+     * @OneToMany(targetEntity="Telefone", mappedBy="aluno", cascade={"remove", "persist"})
+     */
+    private $telefones;
+
+    public function __construct()
+    {
+        $this->telefones = new ArrayCollection();
+    }
 
     public function getId(): int
     {
@@ -29,14 +40,22 @@ class Aluno
         return $this->nome;
     }
 
-    //O tipo self significa que estamos retornando
-    //uma instância  para o próprio objeto
-    public function setNome(string  $nome): self
+    public function setNome(string $nome): self
     {
         $this->nome = $nome;
         return $this;
-
     }
 
+    public function addTelefone(Telefone $telefone)
+    {
+        $this->telefones->add($telefone);
+        $telefone->setAluno($this);
 
+        return $this;
+    }
+
+    public function getTelefones(): Collection
+    {
+        return $this->telefones;
+    }
 }
