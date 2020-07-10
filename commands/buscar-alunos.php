@@ -23,7 +23,7 @@ $alunoEspecifico = $alunoRepository->find(2);
 echo $alunoEspecifico->getNome() . "\n\n";
 
 $marcio = $alunoRepository->findBy([
-    'nome' => 'Leonardo Jargão'
+    'nome' => 'Márcio Miranda'
 ]);
 
 var_dump($marcio);
