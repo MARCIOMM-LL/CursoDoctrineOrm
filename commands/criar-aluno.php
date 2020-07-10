@@ -6,6 +6,9 @@ use Alura\Doctrine\Helper\EntityManagerFactory;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+$entityManagerFactory = new EntityManagerFactory();
+$entityManager = $entityManagerFactory->getEntityManager();
+
 $aluno = new Aluno();
 // A variável $argv[] serve para inserirmos valores através da linha 
 // comando, e o array com o valor 1 serve para exibir todos os valores
@@ -21,11 +24,13 @@ for ($i = 2; $i < $argc; $i++) {
     $telefone = new Telefone();
     $telefone->setNumero($numeroTelefone);
 
+    // O persist foi substituido pelo mapeamento
+    // que é uma outra opção para quando se chama 
+    // uma entidade filha da classe Aluno
+    // $entityManager->persist($telefone);
+
     $aluno->addTelefone($telefone);
 }
-
-$entityManagerFactory = new EntityManagerFactory();
-$entityManager = $entityManagerFactory->getEntityManager();
 
 $entityManager->persist($aluno);
 
