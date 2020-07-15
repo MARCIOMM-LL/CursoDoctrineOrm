@@ -4,6 +4,11 @@ use Alura\Doctrine\Entity\Aluno;
 use Alura\Doctrine\Entity\Telefone;
 use Alura\Doctrine\Helper\EntityManagerFactory;
 
+// A constante mágica pega o diretório atual que 
+//  vai desde C:\CursoDoctrineOrm até /vendor/autoload.php
+// no caso /vendor/autoload.php como está dentro da pasta 
+// commands, precisa subir um diretório /../vendor/autoload.php
+// para chegar na pasta vendor 
 require_once __DIR__ . '/../vendor/autoload.php';
 
 $entityManagerFactory = new EntityManagerFactory();

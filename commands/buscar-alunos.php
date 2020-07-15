@@ -9,10 +9,15 @@ require_once __DIR__ . '/../vendor/autoload.php';
 $entityManagerFactory = new EntityManagerFactory();
 $entityManager = $entityManagerFactory->getEntityManager();
 
-$alunoRepository = $entityManager->getRepository(Aluno::class);
+// $alunoRepository = $entityManager->getRepository(Aluno::class);
 
-/** @var Aluno[] $alunoList */
-$alunoList = $alunoRepository->findAll();
+// /** @var Aluno[] $alunoList */
+// $alunoList = $alunoRepository->findAll();
+
+// Abaixo temos a linguagem "DQL/doctrine query language" 
+$sql = "SELECT aluno FROM Alura\\Doctrine\\Entity\\Aluno aluno  WHERE aluno.id = 1 OR aluno.nome = 'David Luis' ORDER BY aluno.nome ";
+$query = $entityManager->createQuery($sql);
+$alunoList = $query->getResult();
 
 foreach ($alunoList as $aluno) {
     $telefones = $aluno
