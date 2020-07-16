@@ -29,8 +29,11 @@ class EntityManagerFactory
         );
         // Aqui temos a conexão com o banco em questão e seu devido caminho
         $connection = [
-            'driver' => 'pdo_sqlite',
-            'path' => $rootDir . '/var/data/banco.sqlite'
+            'driver' => 'pdo_mysql',
+            'host' => 'localhost',
+            'dbname' => 'curso_doctrine',
+            'user' => 'root',
+            'password' => '1112' 
         ];
 
         // Aqui temos o retorno da conexão através da classe create que faz a conaxão efetivamente
