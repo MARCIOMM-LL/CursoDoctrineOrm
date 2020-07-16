@@ -2,7 +2,6 @@
 
 namespace Alura\Doctrine\Repository;
 
-use Alura\Doctrine\Entity\Aluno;
 use Doctrine\ORM\EntityRepository;
 
 class AlunoRepository extends EntityRepository
