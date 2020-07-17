@@ -47,12 +47,12 @@ class Curso
 
     public function addAluno(Aluno $aluno)
     {
-        // Na relação abaixo ele fala que quando adiciona um "aluno"
-        // esse aluno pertence ao "curso" atual
         if ($this->alunos->contains($aluno)) {
             return $this;
         }
 
+        // Na relação abaixo ele fala que quando adiciona um "aluno"
+        // esse aluno pertence ao "curso" atual
         $this->alunos->add($aluno);
         $aluno->addCurso($this);
 
